@@ -56,6 +56,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     UNREFERENCED_PARAMETER( hPrevInstance );
     UNREFERENCED_PARAMETER( lpCmdLine );
 
+	
     if( FAILED( InitWindow( hInstance, nCmdShow ) ) )
         return 0;
 
@@ -64,7 +65,6 @@ int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
         CleanupDevice();
         return 0;
     }
-
     // petla komunikatów
     MSG msg = {0};
     while( WM_QUIT != msg.message )

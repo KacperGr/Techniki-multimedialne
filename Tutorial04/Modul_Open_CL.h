@@ -1,9 +1,13 @@
 #pragma once
-class Modul_Open_CL
-{
+#include <CL\opencl.h>
+#include <string>
 
+class OpenCLError {
 public:
-	Modul_Open_CL();
-	~Modul_Open_CL();
+	std::string komunikat;
 };
+
+//funkcja wczytuj¹ca program rdzenia
+char* loadProgSource(const char*,const char*, size_t*);
+void inicjacja(char*);
 

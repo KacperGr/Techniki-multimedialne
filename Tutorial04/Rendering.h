@@ -6,6 +6,7 @@
 #include <directxmath.h>
 #include <directxcolors.h>
 #include "resource.h"
+#include "Modul_Open_CL.h"
 
 using namespace DirectX;
 //--------------------------------------------------------------------------------------
