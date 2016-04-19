@@ -7,6 +7,9 @@
 #include <directxcolors.h>
 #include "resource.h"
 #include "Modul_Open_CL.h"
+#include <string>
+#include <ScreenGrab.h>
+#include <Wincodec.h>
 
 using namespace DirectX;
 //--------------------------------------------------------------------------------------
@@ -26,12 +29,18 @@ struct ConstantBuffer
 	XMMATRIX mProjection;
 };
 
+class DirectXError
+{
+public:
+	std::string komunikat;
+};
 //--------------------------------------------------------------------------------------
 //Deklaracje funkcji
 //--------------------------------------------------------------------------------------
 HRESULT InitDevice();
 void CleanupDevice();
 void Render();
+void SavetoFile(const wchar_t*);
 
 extern HINSTANCE               g_hInst;
 extern HWND                    g_hWnd;

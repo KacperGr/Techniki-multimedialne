@@ -393,7 +393,29 @@ void Render()
 	g_pImmediateContext->VSSetShader(g_pVertexShader, nullptr, 0);
 	g_pImmediateContext->VSSetConstantBuffers(0, 1, &g_pConstantBuffer);
 	g_pImmediateContext->PSSetShader(g_pPixelShader, nullptr, 0);
-	g_pImmediateContext->DrawIndexed(36, 0, 0);       
+	g_pImmediateContext->DrawIndexed(36, 0, 0);    
+
+	//Zapis do pliku
+	try {
+		SavetoFile(L"Wynik_renderowania.bmp");
+	}
+	catch (DirectXError stan)
+	{
+
+	}
 	// wyœwietlenie back buffora
 	g_pSwapChain->Present(0, 0);
+}
+
+void SavetoFile(const wchar_t* filename)
+{
+	ID3D11Texture2D* backBuffer;
+
+	HRESULT re=g_pSwapChain->GetBuffer(0, __uuidof(backBuffer), reinterpret_cast<void**>(&backBuffer));
+
+	if (!SUCCEEDED(re))throw DirectXError{ "Nie mo¿a pobraæ buffora" };
+	SaveDDSTextureToFile(g_pImmediateContext, backBuffer, filename);
+		 SaveWICTextureToFile(g_pImmediateContext, backBuffer,GUID_ContainerFormatBmp, filename,&GUID_WICPixelFormat16bppBGR565);
+	
+	
 }
